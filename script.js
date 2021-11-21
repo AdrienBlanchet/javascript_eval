@@ -1,43 +1,50 @@
 const buttons = document.querySelectorAll('.btn');
 const icon = document.querySelector('.des')
+const title_player1 = document.querySelector('.round1 > h2')
+const title_player2 = document.querySelector('.round2 > h2')
+
 const scoreRound1 = document.querySelector('.scoreRound1')
 const scoreGlobal1 = document.querySelector('.scoreGlobal1')
+
+const scoreRound2 = document.querySelector('.scoreRound2')
+const scoreGlobal2 = document.querySelector('.scoreGlobal2')
+
 const tab = [1, 2, 3, 4, 5, 6];
-let result = 0;
-let somme = 0;
-console.log(scoreRound1);
+let tirage = 0;
+let scoreR1 = 0;
+let scoreG1 = 0;
+let scoreR2 = 0;
+let scoreG2 = 0;
 
-//Fonction tirage aléatoire
 
-
+//Fonction tirage aléatoire / Affichage /appel des fonctions
 let play = () => {
- result =  Math.floor(Math.random() * tab.length+1);
- //console.log(result); 
-      switch (result) {
+ tirage =  Math.floor(Math.random() * tab.length+1);
+  
+      switch (tirage) {
         case 1:
           icon.setAttribute('src', 'images/one.png'); 
-          score1(result);
-          alert('tour suivant');
+          changePlayerAndReset();
           break;
         case 2:
           icon.setAttribute('src', 'images/two.png'); 
-          score1(result);
+          addScoreRound();
           break;
         case 3:
           icon.setAttribute('src', 'images/three.png');
-          score1(result);
+          addScoreRound();
           break;
         case 4:
           icon.setAttribute('src', 'images/four.png');
-          score1(result);
+          addScoreRound();
           break;
         case 5:
           icon.setAttribute('src', 'images/five.png'); 
-          score1(result);
+          addScoreRound();
           break;
         case 6:
           icon.setAttribute('src', 'images/six.png'); 
-          score1(result);
+          addScoreRound();
           break;
         default:
           null;
@@ -45,21 +52,46 @@ let play = () => {
 };
 
 
-let score1 = (res) => {
-  
-  if(res == 1){
-    scoreRound1.innerHTML = 0; 
-    
+let addScoreRound = () => {
+  if (title_player1.classList.value == 'underline'){
+    scoreR1 += tirage;
+    scoreRound1.innerHTML = scoreR1;
   }else{
-    somme += res  
-    scoreRound1.innerHTML = somme;
+    scoreR2 += tirage;
+    scoreRound2.innerHTML = scoreR2;
   }
 }
 
-let scoreSave = (somme) => {
-scoreGlobal1.innerHTML = somme;
+let changePlayerAndReset = () => {
+  if (title_player1.classList.value == 'underline'){
+    scoreR1 = 0;
+    scoreRound1.innerHTML = scoreR1;
+  }else{
+    scoreR2 = 0;
+    scoreRound2.innerHTML = scoreR2;
+  }
+  title_player1.classList.toggle('underline');
+  title_player2.classList.toggle('underline');
 }
 
+
+let scoreSave = () => {
+  if (title_player1.classList.value == 'underline'){
+    scoreG1 += scoreR1;
+    scoreGlobal1.innerHTML = scoreG1;
+    changePlayer();
+  } else{
+    scoreG2 += scoreR2;
+    scoreGlobal2.innerHTML = scoreG2;
+    changePlayer();
+  }
+
+}
+
+let changePlayer = () => {
+  title_player1.classList.toggle('underline');
+  title_player2.classList.toggle('underline');
+}
 
 
 buttons.forEach((button) => {
@@ -73,7 +105,7 @@ buttons.forEach((button) => {
               play()
               break;
             case "Hold":
-              scoreSave(somme);
+              scoreSave();
               break;
             default:
               null;

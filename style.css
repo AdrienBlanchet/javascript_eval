@@ -37,7 +37,8 @@
     height: 70vh;
 }
 
-.round1 > h2{
-    border-bottom: solid black;
+.underline{
+    text-decoration: underline;
 
 }
+
