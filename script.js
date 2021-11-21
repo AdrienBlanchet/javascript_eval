@@ -79,10 +79,18 @@ let scoreSave = () => {
   if (title_player1.classList.value == 'underline'){
     scoreG1 += scoreR1;
     scoreGlobal1.innerHTML = scoreG1;
+    if (scoreG1 >= 50){
+      alert('Player1 gagne le jeu');
+      newGame();
+    }
     changePlayer();
   } else{
     scoreG2 += scoreR2;
     scoreGlobal2.innerHTML = scoreG2;
+    if (scoreG2 >= 50){
+      alert('Player2 gagne le jeu');
+      newGame();
+    }
     changePlayer();
   }
 
@@ -94,12 +102,24 @@ let changePlayer = () => {
 }
 
 
+let newGame = () => {
+scoreR1 = 0;
+scoreG1 = 0;
+scoreR2 = 0;
+scoreG2 = 0;
+scoreRound1.innerHTML = 0;
+scoreRound2.innerHTML = 0;
+scoreGlobal1.innerHTML = 0;
+scoreGlobal2.innerHTML = 0;
+}
+
+
 buttons.forEach((button) => {
     button.addEventListener('click', (e) =>{
         
         switch (e.target.innerHTML) {
             case "New Game":
-              alert('new');
+              newGame();
               break;
             case "Roll Dice":
               play()
