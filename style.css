@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+*{
+    font-family: 'Lato', sans-serif;
+}
+
+.bgcolor{
+    background-color: rgba(194, 194, 194, 0.2);
+}
+
 .player1{
     height: 70vh;
-    
 }
 
 .player2{
@@ -8,29 +16,31 @@
 }
 
 .scoreRound1{
-    background-color: lightpink;
+    color: red;
     width: 50px;
     height: 50px;
     margin-top: 20px;
 }
 
 .scoreRound2{
-    background-color: lightpink;
+    color: red;
     width: 50px;
     height: 50px;
     margin-top: 20px;
 }
 
 .scoreGlobal1{
-    background-color: lightseagreen;
-    width: 50px;
-    height: 50px;
+    background-color: red;
+    width: 60px;
+    height: 60px;
+    color: white;
 }
 
 .scoreGlobal2{
-    background-color: lightseagreen;
-    width: 50px;
-    height: 50px;
+    background-color: red;
+    width: 60px;
+    height: 60px;
+    color: white;
 }
 
 .middle{
@@ -38,7 +48,20 @@
 }
 
 .underline{
-    text-decoration: underline;
+    text-decoration: underline red 2px;
+    
 
 }
 
+@media screen and (max-width: 768px){
+
+    .player1{
+        height: 33vh;
+    }
+    .player2{
+        height: 33vh;
+    }
+    .middle{
+        height: 33vh;
+    }
+}
